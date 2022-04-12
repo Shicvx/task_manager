@@ -1,0 +1,57 @@
+.message_area {
+    width: 100%;
+    height: 100px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}
+
+.form_button {
+    position: fixed;
+    right: 0;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    width: auto;
+    height: fit-content;
+    color: white;
+    font-weight: bold;
+    border: 0;
+    font-size: 16px;
+    border-radius: 3px;
+    padding: 8px 17px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-left: 0.6em;
+    background-color: black;
+    transition: 0.3s;
+}
+
+.form_button:hover {
+    background-color: #2da82d;
+}
+
+.form_submit {
+    display: flex;
+    align-items: end;
+}
+
+.form_select {
+    font-weight: 500;
+    border: 0;
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 8px 17px;
+    background-color: #e1ddddbd;
+}
+
+.priority_input {
+    margin-bottom: 1em;
+}
+
+.priority_input label {
+    margin-right: 2em;
+}
