@@ -4,6 +4,11 @@ import './style.css';
 
 const CreateForm = () => {
     const [value, onChange] = useState(new Date());
+
+    const handleSubmit = () => {
+        console.log("Submitted button")
+    }
+
     return (
         <>
         <textarea className="message_area" name="comment" form="usrform" placeholder='Enter text here ...'></textarea>
@@ -30,7 +35,7 @@ const CreateForm = () => {
                         <option value="opel">Opel</option>
                         <option value="audi">Audi</option>
                     </select>
-                <button className='form_button'>Submit</button>
+                <button className='form_button' onSubmit={handleSubmit}>Submit</button>
             </div>
         </form>
         </>

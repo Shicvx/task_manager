@@ -27,6 +27,7 @@
     align-items: center;
     justify-content: space-between;
     padding-top: 1.5em;
+    padding-bottom: 3em;
 }
 
 .right_input {
@@ -39,6 +40,8 @@
 
 .task_list {
     padding: 5em;
+    padding-bottom: 0em;
+    padding-top: 1.5em;
 }
 
 .task_container {

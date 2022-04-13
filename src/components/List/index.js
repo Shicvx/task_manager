@@ -1,18 +1,18 @@
 import React from 'react';
 import './style.css';
-import axios from 'axios';
-import {useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllUsers } from '../../store/actions';
+
 
 const UserList = () => {
-    const [users, setUsers] = useState(null);
+    const dispatch = useDispatch();
+    const users = useSelector((state) => state.User.users);
 
     useEffect(() => {
-        axios.get('/listusers')
-        .then(res => setUsers(res.data.users))
-        .catch(error => console.log(error))
-    }, []);
+        dispatch(getAllUsers())
+    }, [dispatch]);
 
-    console.log(users);
 
     return (
         <>
@@ -24,7 +24,7 @@ const UserList = () => {
                     return(
                     <div key={user.id}>
                         <div className='profile'>
-                            <img className="image" />
+                            <img className="image"/>
                             <h3> | {user.name} </h3>
                         </div>
                     </div>
