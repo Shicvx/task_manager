@@ -17,6 +17,10 @@ const Task = () => {
     setModalopen(false);
   };
 
+  const pull_data = (data) => {
+    setModalopen(data); // LOGS DATA FROM CHILD
+  }
+
   useEffect(() => {
     dispatch(getAllTask());
   }, [dispatch]);
@@ -94,7 +98,7 @@ const Task = () => {
     <>
       <Modal show={Modalopen} handleClose={Hidemodal}>
         <h2>New data</h2>
-        <CreateForm />
+        <CreateForm func={pull_data}/>
       </Modal>
       <div className="column_right">
         <div className="right_header">
