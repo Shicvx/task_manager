@@ -31,3 +31,30 @@ export const getAllUsers = () => {
         .catch(() => toast.error("Oops! Something went wrong."))
     }
   };
+
+  export const updateTask = (body) => {
+    return(dispatch) => {
+      axios.post('/update', qs.stringify(body))
+      .then(res => console.log("I am the Response",res))
+        .then(() => {
+          toast.success("New Task Added");
+          dispatch(getAllTask());
+
+        })
+        .catch(() => toast.error("Oops! Something went wrong."))
+    }
+  }
+
+  export const deleteTask = (id) => {
+    const body = {'taskid': id}
+    return(dispatch) => {
+      axios.post('/delete', qs.stringify(body))
+      .then(res => console.log("I am the Response",res))
+        .then(() => {
+          toast.success("Task Deleted");
+          dispatch(getAllTask());
+
+        })
+        .catch(() => toast.error("Oops! Something went wrong."))
+    }
+  }

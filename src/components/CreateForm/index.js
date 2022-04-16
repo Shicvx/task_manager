@@ -39,7 +39,7 @@ const CreateForm = (props) => {
     return (
         <>
         <form onSubmit={handleSubmit}>
-        <textarea className="message_area" name="message" placeholder='Enter text here ...' onChange={handleChange}></textarea>
+        <textarea className="message_area" name="message" value={FormData.message} placeholder='Enter text here ...' onChange={handleChange}></textarea>
             <div className="priority_input">
                 <h3>Priority</h3>
                 <input type="radio" name="priority" onChange={handleChange} value="1"/>
@@ -56,7 +56,7 @@ const CreateForm = (props) => {
                 <h3>Assigned to :</h3>
             <div className='form_submit'>
                 <label for="cars" style={{marginRight: "2em"}}>Select the user:</label>
-                    <select name="assigned_to" onChange={handleChange} className='form_select'>
+                    <select name="assigned_to" onChange={handleChange} value={FormData.assigned_to} className='form_select'>
                         <option selected disabled hidden>-user-</option>
                         {users?.map((user) => {
                             return(

@@ -5,16 +5,23 @@ import { useState, useEffect } from "react";
 import Modal from "../Modal";
 import CreateForm from "../CreateForm";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllTask } from "../../store/actions";
+import { getAllTask, updateTask, deleteTask } from "../../store/actions";
 import Frame from "react-frame-component";
 
 const Task = () => {
   const [Modalopen, setModalopen] = useState(false);
+  const [Modalopen1, setModalopen1] = useState(false);
   const dispatch = useDispatch();
   const tasks = useSelector((state) => state.TaskList.tasks);
 
+  const [deleteId, setdeleteId] = useState(null);
+
   const Hidemodal = () => {
     setModalopen(false);
+  };
+
+  const Hidemodal1 = () => {
+    setModalopen1(false);
   };
 
   const pull_data = (data) => {
@@ -24,6 +31,22 @@ const Task = () => {
   useEffect(() => {
     dispatch(getAllTask());
   }, [dispatch]);
+
+  const EditHandler = () => {
+    // dispatch(updateTask(id))
+    console.log("I am the body ");
+  }
+
+  const ModelHandler = (id) => {
+    setdeleteId(id);
+    setModalopen1(!Modalopen1)
+  }
+
+  const DeleteHandler = () => {
+    dispatch(deleteTask(deleteId));
+    setModalopen1(false);
+    setdeleteId(null);
+  }
 
 
   const TaskListModal = () => {
@@ -68,9 +91,12 @@ const Task = () => {
                         width: "20px",
                         height: "auto",
                         marginRight: "1em",
-                      }}
+                        cursor: "pointer"
+                      }} onClick={() => EditHandler("23")}
                     />
-                    <MdDelete style={{ width: "20px", height: "auto" }} />
+                    <MdDelete style={{ width: "20px", height: "auto", cursor: "pointer" }}
+                    onClick={() => ModelHandler(`${task.id}`) }
+                    />
                   </div>
                 </div>
                 <h3>{task.message}</h3>
@@ -99,6 +125,12 @@ const Task = () => {
       <Modal show={Modalopen} handleClose={Hidemodal}>
         <h2>New data</h2>
         <CreateForm func={pull_data}/>
+      </Modal>
+      <Modal show={Modalopen1} handleClose={Hidemodal1}>
+        <div style={{display: "flex", flexDirection: "column" ,alignItems: "center"}}>
+          <h4>Are you sure, you want to delete the task ? </h4>
+          <button onClick={DeleteHandler}>Delete</button>
+        </div>
       </Modal>
       <div className="column_right">
         <div className="right_header">
