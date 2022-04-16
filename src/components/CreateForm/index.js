@@ -23,17 +23,17 @@ const CreateForm = (props) => {
         setFormData({
           ...FormData,
           [e.target.name]: e.target.value,
-          due_date: value?.toISOString().split('T')[0] + " " + "16.03.34",
-        // due_date: date(value.toISOString()),
+          due_date: value?.toISOString().split('T')[0] + " " + value.getHours() + ":" + value.getMinutes() + ":" + value.getSeconds(),
         });
       };
 
       const handleSubmit = (e) => {
         e.preventDefault()
-        console.log("Form data,", FormData)
         dispatch(createTask(FormData));
         props.func(false);
         toast.success("New Task Added");
+        // Not working
+        setFormData(initialFormData);
       };
 
     return (
